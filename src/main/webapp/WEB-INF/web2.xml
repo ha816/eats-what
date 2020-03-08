@@ -1,0 +1,71 @@
+<!-- web application의 설정을 위한 deployment descriptor-->
+<!-- Maven Deploy 작업 후 Servlet의 정보를 설정해준다. -->
+<!--브라우저가 Java Servlet에 접근하기 위해서는 WAS(Ex. Tomcat)에 필요한 정보를 알려줘야 해당하는 Servlet을 호출할 수 있다.-->
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+        http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <!-- 기본적으로 Spring Boot가 세팅하지만 web.xml도 읽어서 하이브리드로 필요한 세팅을 한다. -->
+
+    <!--&lt;!&ndash; 서블릿 컨테이너 설정&ndash;&gt;-->
+    <!--<listener>&lt;!&ndash; 서블릿 컨테이너의 컨텍스트 로더 리스너 클래스로 ContextLoaderListener를 정의&ndash;&gt;-->
+        <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+    <!--</listener>-->
+    <!--<context-param>-->
+        <!--<param-name>contextClass</param-name>&lt;!&ndash; 서블릿 컨테이너의 contextClass 파라미터에 AnnotationConfigWebApplicationContext 클래스를 지정&ndash;&gt;-->
+        <!--<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>-->
+    <!--</context-param>-->
+    <!--<context-param>-->
+        <!--<param-name>contextConfigLocation</param-name>&lt;!&ndash; 서블릿 컨테이너의 contextConfigLocation 파라미터에 example.AppConfig 클래스를 지정&ndash;&gt;-->
+        <!--<param-value>example.example.config.AppConfig</param-value>-->
+    <!--</context-param>-->
+
+    <!--&lt;!&ndash; 서블릿 설정&ndash;&gt;-->
+    <!--<servlet>-->
+        <!--<servlet-name>app</servlet-name>&lt;!&ndash; 서블릿 이름 지정&ndash;&gt;-->
+        <!--<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>&lt;!&ndash; 서블릿 구현 클래스 지정&ndash;&gt;-->
+        <!--<init-param>&lt;!&ndash; 서블릿의 contextClass 파라미터에 AnnotationConfigWebApplicationContext 클래스를 지정&ndash;&gt;-->
+            <!--<param-name>contextClass</param-name>-->
+            <!--<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>&lt;!&ndash; 서블릿의 contextConfigLocation 파라미터에 example.WebMvcConfig 클래스를 지정&ndash;&gt;-->
+            <!--<param-name>contextConfigLocation</param-name>-->
+            <!--<param-value>example.example.config.WebMvcConfig</param-value>-->
+        <!--</init-param>-->
+        <!--<load-on-startup>1</load-on-startup>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>&lt;!&ndash; 서블릿 컨테이너에 요청 URL에 대응하는 servlet 등록&ndash;&gt;-->
+        <!--<servlet-name>app</servlet-name>-->
+        <!--<url-pattern>/</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+    <!--&lt;!&ndash; 필터 설정&ndash;&gt;-->
+    <!--<filter>-->
+        <!--<filter-name>CharacterEncodingFilter</filter-name>-->
+        <!--<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>-->
+        <!--<init-param>&lt;!&ndash; 필터의 encoding 파라미터에 UTF-8 지정&ndash;&gt;-->
+            <!--<param-name>encoding</param-name>-->
+            <!--<param-value>UTF-8</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>&lt;!&ndash; 필터의 forceEncoding 파라미터를 지정. true이면 요청 문자와 응답 문자 인코딩을 강제로 UTF-8로 지정&ndash;&gt;-->
+            <!--<param-name>forceEncoding</param-name>-->
+            <!--<param-value>true</param-value>-->
+        <!--</init-param>-->
+    <!--</filter>-->
+    <!--<filter-mapping>&lt;!&ndash; 서블릿 컨테이너에 요청 URL에 대응하는 filter 등록&ndash;&gt;-->
+        <!--<filter-name>CharacterEncodingFilter</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+    <!--</filter-mapping>-->
+
+    <!--<jsp-config>-->
+        <!--<jsp-property-group>-->
+            <!--<url-pattern>*.jsp</url-pattern>-->
+            <!--<page-encoding>UTF-8</page-encoding>-->
+            <!--<include-prelude>/WEB-INF/include.jsp</include-prelude> &lt;!&ndash; 모든 JSP 참조하는 JSP&ndash;&gt;-->
+        <!--</jsp-property-group>-->
+    <!--</jsp-config>-->
+
+</web-app>
