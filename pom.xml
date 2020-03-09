@@ -46,6 +46,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>nz.ac.waikato.cms.weka</groupId>
+            <artifactId>weka-stable</artifactId>
+            <version>3.8.4</version>
+        </dependency>
+
+
         <!--<dependency>&lt;!&ndash;하이버네이트 Bean Validation을 사용하여 입력값 유효성 검증&ndash;&gt;-->
             <!--<groupId>org.hibernate</groupId>-->
             <!--<artifactId>hibernate-validator</artifactId>-->
