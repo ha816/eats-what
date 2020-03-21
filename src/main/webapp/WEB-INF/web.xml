@@ -10,10 +10,10 @@
 
     <!-- 기본적으로 Spring Boot가 세팅하지만 web.xml도 읽어서 하이브리드로 필요한 세팅을 한다. -->
 
-    <!--&lt;!&ndash; 서블릿 컨테이너 설정&ndash;&gt;-->
-    <!--<listener>&lt;!&ndash; 서블릿 컨테이너의 컨텍스트 로더 리스너 클래스로 ContextLoaderListener를 정의&ndash;&gt;-->
-        <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
-    <!--</listener>-->
+    <!-- 서블릿 컨테이너 설정-->
+    <listener><!-- 서블릿 컨테이너의 컨텍스트 로더 리스너 클래스로 ContextLoaderListener를 정의-->
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
     <!--<context-param>-->
         <!--<param-name>contextClass</param-name>&lt;!&ndash; 서블릿 컨테이너의 contextClass 파라미터에 AnnotationConfigWebApplicationContext 클래스를 지정&ndash;&gt;-->
         <!--<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>-->
@@ -23,24 +23,20 @@
         <!--<param-value>example.example.config.AppConfig</param-value>-->
     <!--</context-param>-->
 
-    <!--&lt;!&ndash; 서블릿 설정&ndash;&gt;-->
-    <!--<servlet>-->
-        <!--<servlet-name>app</servlet-name>&lt;!&ndash; 서블릿 이름 지정&ndash;&gt;-->
-        <!--<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>&lt;!&ndash; 서블릿 구현 클래스 지정&ndash;&gt;-->
-        <!--<init-param>&lt;!&ndash; 서블릿의 contextClass 파라미터에 AnnotationConfigWebApplicationContext 클래스를 지정&ndash;&gt;-->
-            <!--<param-name>contextClass</param-name>-->
-            <!--<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>-->
-        <!--</init-param>-->
-        <!--<init-param>&lt;!&ndash; 서블릿의 contextConfigLocation 파라미터에 example.WebMvcConfig 클래스를 지정&ndash;&gt;-->
-            <!--<param-name>contextConfigLocation</param-name>-->
-            <!--<param-value>example.example.config.WebMvcConfig</param-value>-->
-        <!--</init-param>-->
-        <!--<load-on-startup>1</load-on-startup>-->
-    <!--</servlet>-->
-    <!--<servlet-mapping>&lt;!&ndash; 서블릿 컨테이너에 요청 URL에 대응하는 servlet 등록&ndash;&gt;-->
-        <!--<servlet-name>app</servlet-name>-->
-        <!--<url-pattern>/</url-pattern>-->
-    <!--</servlet-mapping>-->
+    <!-- 서블릿 설정-->
+    <servlet>
+        <servlet-name>dispatcher</servlet-name><!-- 서블릿 이름 지정-->
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class><!-- 서블릿 구현 클래스 지정-->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/dispatcher.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping><!-- 서블릿 컨테이너에 요청 URL에 대응하는 servlet 등록-->
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 
     <!--&lt;!&ndash; 필터 설정&ndash;&gt;-->
     <!--<filter>-->
