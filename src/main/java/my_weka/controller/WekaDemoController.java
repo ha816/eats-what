@@ -15,10 +15,9 @@ public class WekaDemoController {
     @Autowired
     private WekaDemoService service;
 
-    @RequestMapping("/home")
+    @RequestMapping("/")
     @ResponseBody
     public String home() {
-
         try {
             return test();
         } catch (Exception e) {
@@ -41,7 +40,7 @@ public class WekaDemoController {
 
         String input = "CLASSIFIER weka.classifiers.trees.J48 "
                 + "FILTER weka.filters.unsupervised.instance.Randomize "
-                + "DATASET /Users/haha816/git/eats-what/src/main/resources/data/iris.arff";
+                + "DATASET src/main/resources/data/iris.arff";
 
         String[] args = input.split(" ");
         if (args.length < 6) {
